@@ -1,0 +1,46 @@
+{% extends 'main/base.html' %} {% block title %}List & Update Book{% endblock title %}
+
+{% block body %} {% load static %}
+
+<div class="container">
+  <div class="row">
+    <div class="col-sm-6">
+      <div class="col-md-12 mt-3">
+        <h1 class="text-center">Book Details</h1>
+      </div>
+            <table id="example" class="display" style="width: 100%">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Book Name</th>
+            <th>Author</th>
+            <th>Publisher</th>
+            <th>Price</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for book in book %}
+          <tr>
+            <td>{{book.id}}</td>
+            <td>{{book.name}}</td>
+            <td>{{book.author}}</td>
+            <td>{{book.publisher}}</td>
+            <td>{{book.price}}</td>
+           <td><a href="{%  url 'update_book_details' book.id %}" class="btn btn-warning btm-sm">Edit</a>
+            <form action="{% url 'delete_book' book.id %}" method="post" class="d-inline">
+              {% csrf_token %}
+              <input type="submit" class="btn btn-danger mt-3" value="Delete">
+            </form>
+          </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+
+    </div>
+  </div>
+</div>
+
+
+{% endblock body %}

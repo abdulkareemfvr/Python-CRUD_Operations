@@ -1,0 +1,46 @@
+{% extends 'main/base.html' %} {% block title %}Home{% endblock title %}
+
+{% block body %} {% load static %}
+
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-sm-6">
+      <div class="col-md-12 mt-3">
+        <h1 class="text-center">BookS</h1>
+      </div>
+            <table id="example" class="display" style="width: 100%">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Book Name</th>
+            <th>Author</th>
+            <th>Publisher</th>
+            <th>Price</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for book in book %}
+          <tr>
+            <td>{{book.id}}</td>
+            <td>{{book.name}}</td>
+            <td>{{book.author}}</td>
+            <td>{{book.publisher}}</td>
+            <td>{{book.price}}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+            
+    </div>
+         <div class="col-sm-6">
+           <img
+                src="{% static '/img/book.jpg' %}"
+                class="img-fluid img-thumbnail"
+                alt=""
+              />
+        </div>
+  </div>
+</div>
+
+
+{% endblock body %}
